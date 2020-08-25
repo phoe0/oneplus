@@ -1,0 +1,34 @@
+#con-login {
+  min-height: 400px;
+  overflow: hidden;
+  background: whitesmoke; }
+
+#con-login form span {
+  color: red;
+  font-size: 12px;
+  font-weight: 800; }
+
+#con-login form em {
+  color: green;
+  font-size: 12px;
+  font-weight: 800; }
+
+#con-login .login-center {
+  border: 1px solid red;
+  position: relative;
+  padding-top: 50px; }
+  #con-login .login-center p {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600; }
+  #con-login .login-center form {
+    position: absolute;
+    top: 100px;
+    left: 570px; }
+    #con-login .login-center form input {
+      border: 1px solid #aca6a6;
+      height: 30px;
+      width: 200px;
+      margin: 5px 0; }
+    #con-login .login-center form .sub-in {
+      background: #df7777; }

@@ -1,0 +1,120 @@
+body {
+  width: 1346px; }
+
+#header {
+  height: 60px; }
+  #header img {
+    float: left;
+    padding: 10px 0 0 10px;
+    margin-right: 250px; }
+  #header ul {
+    float: left; }
+    #header ul li {
+      float: left; }
+      #header ul li span {
+        font-size: 16px;
+        margin-left: 5px;
+        line-height: 56px; }
+      #header ul li a {
+        display: block;
+        padding: 0 20px;
+        line-height: 58px;
+        font-size: 14px; }
+    #header ul .active {
+      border-bottom: 2px solid red; }
+  #header span {
+    float: right;
+    font-size: 30px;
+    line-height: 60px; }
+  #header #login {
+    width: 100px;
+    height: 90px;
+    border: 1px solid springgreen;
+    background: #f7f2f7;
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    text-align: center;
+    padding-top: 10px;
+    z-index: 20; }
+    #header #login .login {
+      margin-bottom: 20px; }
+  #header .icon-icon-test35 {
+    margin-right: 30px; }
+  #header .icon-icon-test11 {
+    margin-right: 20px; }
+  #header .sec-one {
+    z-index: 10000;
+    height: 150px;
+    width: 100%;
+    background: white;
+    position: absolute;
+    display: none;
+    top: 60px;
+    justify-content: space-around; }
+    #header .sec-one ul {
+      display: flex;
+      justify-content: space-around; }
+      #header .sec-one ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 40px; }
+        #header .sec-one ul li span {
+          font-size: 30px;
+          margin-top: 20px; }
+        #header .sec-one ul li a {
+          display: block;
+          height: 20px;
+          font-weight: 600; }
+
+#content {
+  min-height: 430px;
+  overflow: hidden;
+  background: whitesmoke; }
+
+body {
+  position: relative; }
+
+.gotop1 {
+  position: fixed;
+  right: 20px;
+  top: 350px;
+  z-index: 20;
+  display: none; }
+  .gotop1 a {
+    display: block;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    background: #f4f4f4;
+    margin-bottom: 10px;
+    border: 1px solid #d6d6d6; }
+    .gotop1 a dl dt {
+      text-align: center; }
+
+.footer .top {
+  width: 800px;
+  margin: 0 auto;
+  padding-bottom: 30px; }
+  .footer .top .wrapper {
+    padding: 30px 0; }
+    .footer .top .wrapper .clearfix {
+      float: left;
+      padding: 0 20px; }
+      .footer .top .wrapper .clearfix img {
+        float: left; }
+      .footer .top .wrapper .clearfix span {
+        float: left;
+        padding-top: 12px;
+        margin-left: 10px; }
+
+.footer .copyright {
+  width: 850px;
+  margin: 0 auto;
+  padding: 60px 0 30px 0; }
+  .footer .copyright .dibu {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px; }

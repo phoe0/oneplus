@@ -1,0 +1,139 @@
+#cont {
+  min-height: 430px;
+  overflow: hidden;
+  background: whitesmoke; }
+  #cont .header {
+    height: 60px;
+    padding: 0 100px;
+    width: 1226px;
+    border-bottom: 1px solid gray; }
+    #cont .header .fir {
+      font: 20px / 60px '';
+      margin-right: 700px; }
+    #cont .header em {
+      margin: 0 20px;
+      font-size: 14px; }
+  #cont .details {
+    padding: 40px 100px 0 100px;
+    width: 1146px;
+    height: 700px; }
+    #cont .details .left {
+      float: left;
+      margin-right: 50px;
+      margin-top: 50px;
+      margin-left: 50px;
+      width: 400px;
+      height: 640px; }
+      #cont .details .left .imgdel {
+        width: 400px;
+        height: 400px;
+        border: 1px solid #cfcdcd; }
+      #cont .details .left .more-pho .mo-li {
+        float: left;
+        border: 1px solid #d6d3d3;
+        margin: 40px 10px 10px;
+        background: #e7e6e6; }
+    #cont .details .right {
+      float: left;
+      width: 500px;
+      padding-bottom: 20px; }
+      #cont .details .right .title {
+        border-bottom: 1px solid gray;
+        margin-bottom: 10px; }
+        #cont .details .right .title .model {
+          font-size: 30px;
+          font-weight: 600;
+          margin-bottom: 30px; }
+        #cont .details .right .title .price {
+          font-size: 20px;
+          padding-bottom: 10px; }
+      #cont .details .right .li {
+        list-style-type: disc;
+        font-size: 12px;
+        color: red;
+        padding: 10px 0; }
+      #cont .details .right p {
+        padding: 10px 0; }
+        #cont .details .right p a {
+          font-size: 12px;
+          color: #5353d4; }
+      #cont .details .right .chenck-model {
+        border-top: 1px solid gray;
+        height: 170px;
+        border-bottom: 1px solid gray; }
+        #cont .details .right .chenck-model p {
+          font-size: 14px; }
+        #cont .details .right .chenck-model .list-mol .bp-cm-button {
+          float: left;
+          margin: 10px;
+          font-size: 12px;
+          border: 1px solid gray;
+          padding: 10px 20px; }
+      #cont .details .right .buy-num {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid gray; }
+        #cont .details .right .buy-num em {
+          font-size: 12px;
+          margin-right: 20px; }
+        #cont .details .right .buy-num #num {
+          text-align: center;
+          width: 20px;
+          background: white; }
+        #cont .details .right .buy-num .changeN {
+          background: #bbbaba;
+          width: 20px;
+          height: 20px; }
+      #cont .details .right .buy-now {
+        height: 50px;
+        margin-top: 30px;
+        font-size: 14px;
+        border-bottom: 1px solid gray; }
+        #cont .details .right .buy-now span {
+          width: 100px;
+          height: 50px;
+          padding: 10px 20px; }
+        #cont .details .right .buy-now .buy {
+          margin: 0 20px;
+          background: #abdddf;
+          color: red; }
+        #cont .details .right .buy-now .add {
+          background: #df5050;
+          font-weight: 800;
+          color: white; }
+      #cont .details .right .zhifu p {
+        margin-top: 10px;
+        height: 20px;
+        background: url(./../img/zhifu.png) no-repeat;
+        border-bottom: 1px solid gray; }
+  #cont #morePro {
+    width: 1200px;
+    height: 1500px;
+    margin: 0 auto;
+    margin-bottom: 50px; }
+    #cont #morePro .pho {
+      width: 1200px;
+      height: 1500px; }
+
+#cont .details .left {
+  position: relative; }
+  #cont .details .left #small #mask {
+    border: 1px solid blue;
+    width: 100px;
+    height: 100px;
+    background: rgba(136, 238, 216, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none; }
+  #cont .details .left #big {
+    border: 1px solid #d8d6d6;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: -100px;
+    left: 430px;
+    display: none;
+    overflow: hidden; }
+    #cont .details .left #big .big-img {
+      position: absolute; }

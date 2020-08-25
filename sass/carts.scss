@@ -1,0 +1,115 @@
+#header {
+    ul {
+        li {
+            // color: black !important;
+        }
+    }
+}
+
+
+#content-cart {
+
+    // min-height: 430px;
+    // overflow: hidden;
+    background: rgb(243, 247, 247);
+    padding-bottom: 30px;
+
+    .carts {
+        min-height: 400px;
+        padding: 0 60px;
+
+        .bs-example {
+            .table {
+                thead {
+                    tr {
+                        th {
+                            text-align: center;
+                        }
+                    }
+                }
+
+                td {
+                    vertical-align: middle;
+                }
+
+                tbody {
+                    tr {
+                        vertical-align: middle;
+                        text-align: center;
+                    }
+
+                    .check-box {
+                        vertical-align: middle;
+                    }
+
+                    .goods {
+                        img {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+
+                    .count {
+                        // border: 1px solid green;
+
+                        .change {
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        .count-input {
+                            width: 40px;
+                            text-align: center;
+                        }
+                    }
+
+                    .operation {
+                        button {
+                            background: rgb(103, 199, 236);
+                            width: 50px;
+                            height: 30px;
+                            border: none;
+                            border-radius: 10px;
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            // 底部结算栏
+            #foot {
+                border: 1px solid red;
+                height: 50px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                background: rgb(247, 246, 242);
+                border-radius: 20px;
+
+                .total {
+                    #priceTotal {
+                        color: red;
+                        font-weight: 700;
+                    }
+                }
+
+                .fr {
+                    #selectedTotal {
+                        color: blue;
+                        font-weight: 700;
+                    }
+                }
+
+                .submit-Num {
+                    width: 60px;
+                    height: 30px;
+                    text-align: center;
+                    line-height: 30px;
+                    color: white;
+                    background: rgb(226, 105, 105);
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}

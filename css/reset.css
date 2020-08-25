@@ -1,0 +1,36 @@
+/*清除默认标签样式*/
+
+
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,ol,li {
+    list-style: none;
+}
+
+a,u {
+    text-decoration: none;
+    color: black;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+i,em {
+    font-style: normal;
+}
+
+b,strong {
+    font-weight: normal;
+}
+
+input {
+    border: none;
+    outline: none;
+}

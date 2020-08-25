@@ -1,0 +1,53 @@
+#content-cart {
+  background: #f3f7f7;
+  padding-bottom: 30px; }
+  #content-cart .carts {
+    min-height: 400px;
+    padding: 0 60px; }
+    #content-cart .carts .bs-example .table thead tr th {
+      text-align: center; }
+    #content-cart .carts .bs-example .table td {
+      vertical-align: middle; }
+    #content-cart .carts .bs-example .table tbody tr {
+      vertical-align: middle;
+      text-align: center; }
+    #content-cart .carts .bs-example .table tbody .check-box {
+      vertical-align: middle; }
+    #content-cart .carts .bs-example .table tbody .goods img {
+      width: 80px;
+      height: 80px; }
+    #content-cart .carts .bs-example .table tbody .count .change {
+      width: 20px;
+      height: 20px; }
+    #content-cart .carts .bs-example .table tbody .count .count-input {
+      width: 40px;
+      text-align: center; }
+    #content-cart .carts .bs-example .table tbody .operation button {
+      background: #67c7ec;
+      width: 50px;
+      height: 30px;
+      border: none;
+      border-radius: 10px;
+      color: white; }
+    #content-cart .carts .bs-example #foot {
+      border: 1px solid red;
+      height: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #f7f6f2;
+      border-radius: 20px; }
+      #content-cart .carts .bs-example #foot .total #priceTotal {
+        color: red;
+        font-weight: 700; }
+      #content-cart .carts .bs-example #foot .fr #selectedTotal {
+        color: blue;
+        font-weight: 700; }
+      #content-cart .carts .bs-example #foot .submit-Num {
+        width: 60px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        background: #e26969;
+        border-radius: 10px; }

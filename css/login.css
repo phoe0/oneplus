@@ -1,0 +1,26 @@
+#content-login {
+  min-height: 400px;
+  overflow: hidden;
+  background: whitesmoke; }
+
+#content-login .login-center {
+  position: relative;
+  padding-top: 50px; }
+  #content-login .login-center p {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600; }
+  #content-login .login-center form {
+    position: absolute;
+    top: 100px;
+    left: 570px; }
+  #content-login .login-center input {
+    border: 1px solid #aca6a6;
+    height: 30px;
+    width: 200px;
+    margin: 10px 0; }
+  #content-login .login-center .log-sub {
+    background: red;
+    color: white;
+    font-weight: 600;
+    font-size: 18px; }

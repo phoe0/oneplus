@@ -1,0 +1,67 @@
+#conten {
+  min-height: 430px;
+  overflow: hidden;
+  background: whitesmoke; }
+  #conten .goods-list {
+    width: 1200px;
+    min-height: 300px;
+    overflow: hidden;
+    margin: 20px auto; }
+    #conten .goods-list .goodsCon {
+      height: 400px;
+      width: 290px;
+      padding: 30px 0;
+      margin: 0 10px 10px 0;
+      box-sizing: border-box;
+      background: white;
+      border-radius: 20px;
+      position: relative;
+      float: left; }
+      #conten .goods-list .goodsCon a .icon {
+        width: 200px;
+        height: 200px;
+        border: 1px solid pink;
+        border-radius: 20px;
+        margin: 0 45px; }
+      #conten .goods-list .goodsCon a .title {
+        font-size: 14px;
+        padding: 10px 25px;
+        width: 240px;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      #conten .goods-list .goodsCon a .info {
+        color: red;
+        font-size: 14px;
+        text-align: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #ece8e8; }
+      #conten .goods-list .goodsCon .priceCon {
+        padding-top: 10px; }
+        #conten .goods-list .goodsCon .priceCon .price {
+          font-size: 24px;
+          color: red;
+          margin: 0px 0 0 20px; }
+        #conten .goods-list .goodsCon .priceCon .oldPrice {
+          font-size: 12px;
+          color: #bbb8b8;
+          text-decoration: line-through; }
+        #conten .goods-list .goodsCon .priceCon div .soldText {
+          font-size: 12px;
+          margin-left: 20px; }
+        #conten .goods-list .goodsCon .priceCon div .soldSpan span {
+          display: block;
+          height: 5px;
+          width: 20px;
+          background: red;
+          position: absolute;
+          bottom: 20px;
+          left: 20px; }
+      #conten .goods-list .goodsCon .button {
+        background: red;
+        padding: 8px;
+        position: absolute;
+        right: 15px;
+        bottom: 40px;
+        border-radius: 10%; }
