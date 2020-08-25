@@ -48,5 +48,25 @@
         }
     }
 
+    // 根据id。获取商品信息
+    function getGoodsInfo(){
+        $gId = $_POST['gId'];
+        $sql = "select * from product where gId=$gId";
+        $data = select($sql);
+        if($data){
+            echo json_encode([
+            'stateCode'=>200,
+            'state'=>'success',
+            'data'=>$data
+            ]);
+        }else{
+            echo json_encode([
+            'stateCode'=>201,
+            'state'=>'error',
+            'data'=>''
+            ]);
+        }
+    }
+
 
 ?>

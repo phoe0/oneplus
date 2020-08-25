@@ -2,10 +2,8 @@ class Index {
     constructor() {
         // console.log(this);
         bindEve(all('#header>ul>li')[1], 'mouseenter', this.enterone);
-        // bindEve(all('#header>ul>li')[1], 'mouseleave', this.leave);
         bindEve($('#second'), 'mouseleave', this.leave);
         bindEve(all('#header>ul>li')[2], 'mouseenter', this.enter);
-        // bindEve(all('#header>ul>li')[2], 'mouseleave', this.leave);
         bindEve($('#three'), 'mouseleave', this.leave);
 
 
@@ -14,6 +12,18 @@ class Index {
         // 登录注册
         bindEve($('#person'), 'mouseenter', this.login);
         bindEve($('#login'), 'mouseleave', this.out);
+
+        bindEve($('#login .login'), 'click', this.loginFn);
+        bindEve($('#login .reg'), 'click', this.regFn);
+
+        bindEve($('.icon-icon-test11'), 'click', this.cartFn)
+
+        // 给手机，绑定点击事件，跳转到商品列表
+        bindEve($('#second #click'), 'click', this.goodsList);
+
+        // 给logo 绑定点击事件，跳转到首页；
+        bindEve($('#header h1'), 'click', this.index);
+
     }
     enterone() {
         $('#second').style.display = 'none';
@@ -47,6 +57,23 @@ class Index {
 
     login() {
         $('#login').style.display = 'block';
+
+        // 判断用户是否登录；登录则显示用户名；
+        let userName = localStorage.getItem('userName');
+        let str = '';
+        if (userName) {
+            str = `
+                <p class="login">${userName}</p>
+                <p class="reg  logout" >退出</p>
+            `;
+            $('#login').innerHTML = str;
+            $('.logout').onclick = function () {
+                localStorage.removeItem('userName');
+                localStorage.removeItem('userId');
+                location.reload();
+            }
+
+        }
     }
     out() {
         $('#login').style.display = 'none';
@@ -75,10 +102,9 @@ class Index {
 
     // 返回顶部；
     goTop() {
-        // console.log(1112);
-
         window.onscroll = function () {
             var top = document.documentElement.scrollTop || document.body.scrollTop;
+            // console.log(top);
             if (top < 100) {
                 $('.gotop1').style.display = 'none';
             } else {
@@ -87,11 +113,12 @@ class Index {
         }
         bindEve($('.toptop'), 'click', this.top);
     }
+    // 点击之后，返回顶部
     top() {
-
         clearInterval(times);
         var times = setInterval(() => {
             var top = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(top);
             if (top <= 0) {
                 clearInterval(times);
             } else {
@@ -101,9 +128,27 @@ class Index {
     }
 
 
+    // 注册、登录跳转；
+    loginFn() {
+        location.href = 'http://localhost/pro/login.html';
+    }
+    regFn() {
+        location.href = 'http://localhost/pro/register.html';
+    }
+    cartFn() {
+        location.href = 'http://localhost/pro/carts.html';
+    }
 
 
-
+    // 
+    goodsList() {
+        // 跳转到商品列表
+        location.href = 'http://localhost/pro/goods.html';
+    }
+    index() {
+        // 跳转到首页；
+        location.href = 'http://localhost/pro/index-one.html';
+    }
 
 }
 new Index;

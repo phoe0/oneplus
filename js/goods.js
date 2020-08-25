@@ -1,6 +1,7 @@
 class Goods {
     constructor() {
         this.list();
+
     }
 
     // 获取所有的商品信息
@@ -16,9 +17,9 @@ class Goods {
                 // resArr[2] 是一个数组，数组的每个元素是商品的每一行信息；
                 resArr[2].forEach(ele => {
                     str += `
-                            <div class="goodsCon">
+                            <div class="goodsCon" >
                                 <a target="_blank">
-                                    <img src="${ele.gImgSrc}" class="icon">
+                                    <img src="${ele.gImgSrc}" class="icon" key="${ele.gId}">
                                     <h4 class="title">${ele.gName}</h4>
                                     <div class="info">限时抢购200条</div>
                                 </a>
@@ -40,8 +41,11 @@ class Goods {
                 });
                 $('.goods-list').innerHTML = str;
 
+                Goods.targetDetail();
+
             }
         });
+
     }
 
     // 加入购物车的方法
@@ -90,6 +94,27 @@ class Goods {
             localStorage.setItem('carts', JSON.stringify(tmpObj));
         }
     }
+
+
+    // 跳转到详情页
+    static targetDetail() {
+        let imgsObj = all('#conten .goodsCon img');
+        for (let i = 0; i < imgsObj.length; i++) {
+            // imgsObj[i].addEventListener('click', this.hrefDetail);
+            // bindEve(imgsObj[i], 'click', Goods.hrefDetail());
+            imgsObj[i].onclick = function () {
+                let gId = imgsObj[i].getAttribute('key');
+                location.href = `http://localhost/pro/details.html?gId=${gId}`;
+            }
+        }
+
+        // console.log(all('#conten .goodsCon img'));
+
+    }
+
+    // hrefDetail() {
+    //     console.log(1);
+    // }
 
     //   方法
 

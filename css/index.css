@@ -27,19 +27,19 @@ body {
     font-size: 30px;
     line-height: 60px; }
   #header #login {
-    width: 100px;
-    height: 90px;
+    width: 200px;
+    height: 200px;
     border: 1px solid springgreen;
     background: #f7f2f7;
     display: none;
     position: absolute;
     top: 60px;
-    right: 60px;
+    right: 0px;
     text-align: center;
     padding-top: 10px;
     z-index: 20; }
-    #header #login .login {
-      margin-bottom: 20px; }
+    #header #login p {
+      margin: 30px 0; }
   #header .icon-icon-test35 {
     margin-right: 30px; }
   #header .icon-icon-test11 {
@@ -68,6 +68,10 @@ body {
           display: block;
           height: 20px;
           font-weight: 600; }
+
+#second #click span,
+#second #click a {
+  color: red; }
 
 #content {
   min-height: 430px;

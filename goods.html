@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>商品列表</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./font/iconfont.css">
@@ -39,7 +39,7 @@
         <!-- 二级菜单 -->
         <div id="second" class="sec-one">
             <ul>
-                <li>
+                <li id="click">
                     <span class="iconfont icon-shouji"></span>
                     <a href="#">
                         手机
@@ -102,7 +102,7 @@
     <!-- 主体部分 -->
     <div id="conten">
         <div class="goods-list">
-            <div class="goodsCon">
+            <!-- <div class="goodsCon">
                 <a target="_blank">
                     <img src="./img/good.png" class="icon">
                     <h4 class="title">李宁闪击篮球鞋驭帅</h4>
@@ -121,142 +121,85 @@
                 <a class="button" target="_blank" onclick="">
                     立即抢购
                 </a>
-            </div>
-            <div class="goodsCon">
-                <a target="_blank">
-                    <img src="./img/good.png" class="icon">
-                    <h4 class="title">李宁闪击篮球鞋驭帅10镭射队尚4男韦德之道空袭中高帮队尚3.5球鞋</h4>
-                    <div class="info">限时抢购200条</div>
-                </a>
-                <div class="priceCon">
-                    <span class="price">￥499.1</span>
-                    <span class="oldPrice">￥598.92</span>
-                    <div>
-                        <span class="soldText">已售20%</span>
-                        <span class="soldSpan">
-                            <span style="width: 87.12px;"></span>
-                        </span>
-                    </div>
-                </div>
-                <a class="button" target="_blank" onclick="">
-                    立即抢购
-                </a>
-            </div>
-            <div class="goodsCon">
-                <a target="_blank">
-                    <img src="./img/good.png" class="icon">
-                    <h4 class="title">李宁闪击篮球鞋驭帅10镭射队尚4男韦德之道空袭中高帮队尚3.5球鞋</h4>
-                    <div class="info">限时抢购200条</div>
-                </a>
-                <div class="priceCon">
-                    <span class="price">￥499.1</span>
-                    <span class="oldPrice">￥598.92</span>
-                    <div>
-                        <span class="soldText">已售20%</span>
-                        <span class="soldSpan">
-                            <span style="width: 87.12px;"></span>
-                        </span>
-                    </div>
-                </div>
-                <a class="button" target="_blank" onclick="">
-                    立即抢购
-                </a>
-            </div>
-            <div class="goodsCon">
-                <a target="_blank">
-                    <img src="./img/good.png" class="icon">
-                    <h4 class="title">李宁闪击</h4>
-                    <div class="info">限时抢购200条</div>
-                </a>
-                <div class="priceCon">
-                    <span class="price">￥499.1</span>
-                    <span class="oldPrice">￥598.92</span>
-                    <div>
-                        <span class="soldText">已售20%</span>
-                        <span class="soldSpan">
-                            <span style="width: 87.12px;"></span>
-                        </span>
-                    </div>
-                </div>
-                <a class="button" target="_blank" onclick="">
-                    立即抢购
-                </a>
-            </div>
+            </div> -->
+
+
             <!-- 追加 -->
 
 
 
 
         </div>
+    </div>
 
 
 
 
 
-        <!-- go to top -->
-        <div class="gotop1">
-            <a href="cart.htmll">
-                <dl>
-                    <dt><img src="img/gt1.png" /></dt>
-                    <!-- <dd>去购<br />物车</dd> -->
-                </dl>
-            </a>
-            <a href="#" class="dh">
-                <dl>
-                    <dt><img src="img/gt2.png" /></dt>
-                    <!-- <dd>联系<br />客服</dd> -->
-                </dl>
-            </a>
-            <a href="mygxin.html;">
-                <dl>
-                    <dt><img src="img/gt3.png" /></dt>
-                    <!-- <dd>个人<br />中心</dd> -->
-                </dl>
-            </a>
-            <a href="javascript:" class="toptop" style="display: block">
-                <dl>
-                    <dt><img src="img/gt4.png" /></dt>
-                    <!-- <dd>返回<br />顶部</dd> -->
-                </dl>
-            </a>
-            <!-- <p>400-800-8200</p> -->
-        </div>
+    <!-- go to top -->
+    <div class="gotop1">
+        <a href="cart.htmll">
+            <dl>
+                <dt><img src="img/gt1.png" /></dt>
+                <!-- <dd>去购<br />物车</dd> -->
+            </dl>
+        </a>
+        <a href="#" class="dh">
+            <dl>
+                <dt><img src="img/gt2.png" /></dt>
+                <!-- <dd>联系<br />客服</dd> -->
+            </dl>
+        </a>
+        <a href="mygxin.html;">
+            <dl>
+                <dt><img src="img/gt3.png" /></dt>
+                <!-- <dd>个人<br />中心</dd> -->
+            </dl>
+        </a>
+        <a href="javascript:" class="toptop" style="display: block">
+            <dl>
+                <dt><img src="img/gt4.png" /></dt>
+                <!-- <dd>返回<br />顶部</dd> -->
+            </dl>
+        </a>
+        <!-- <p>400-800-8200</p> -->
+    </div>
 
 
 
-        <!-- footer -->
-        <div class="footer">
-            <div class="top">
-                <div class="wrapper">
-                    <div class="clearfix">
-                        <a href="#2" class="fl"><img src="img/foot1.png" /></a>
-                        <span class="fl">7天无理由退货</span>
-                    </div>
-                    <div class="clearfix">
-                        <a href="#2" class="fl">
-                            <img src="img/foot2.png" /></a>
-                        <span class="fl">15天免费换货</span>
-                    </div>
-                    <div class="clearfix"><a href="#2" class="fl"><img src="img/foot3.png" /></a><span
-                            class="fl">满599包邮</span>
-                    </div>
-                    <div class="clearfix"><a href="#2" class="fl"><img src="img/foot4.png" /></a><span
-                            class="fl">手机特色服务</span>
-                    </div>
+    <!-- footer -->
+    <div class="footer">
+        <div class="top">
+            <div class="wrapper">
+                <div class="clearfix">
+                    <a href="#2" class="fl"><img src="img/foot1.png" /></a>
+                    <span class="fl">7天无理由退货</span>
+                </div>
+                <div class="clearfix">
+                    <a href="#2" class="fl">
+                        <img src="img/foot2.png" /></a>
+                    <span class="fl">15天免费换货</span>
+                </div>
+                <div class="clearfix"><a href="#2" class="fl"><img src="img/foot3.png" /></a><span
+                        class="fl">满599包邮</span>
+                </div>
+                <div class="clearfix"><a href="#2" class="fl"><img src="img/foot4.png" /></a><span
+                        class="fl">手机特色服务</span>
                 </div>
             </div>
-            <div class="copyright">
-                <p class="dibu">one-plus&copy;2013-2020公司版权所有 京ICP备080100-44备0000111000号<br />
-                    违法和不良信息举报电话：400-800-8200，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
-            </div>
-
+        </div>
+        <div class="copyright">
+            <p class="dibu">one-plus&copy;2013-2020公司版权所有 京ICP备080100-44备0000111000号<br />
+                违法和不良信息举报电话：400-800-8200，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
         </div>
 
+    </div>
 
-        <script src="./js/lib.js"></script>
-        <script src="./js/ajax.js"></script>
-        <script src="./js/index.js"></script>
-        <script src="./js/goods.js"></script>
+
+    <script src="./js/lib.js"></script>
+    <script src="./js/ajax.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/goods.js"></script>
 
 </body>
 

@@ -72,4 +72,26 @@
         }
     }
 
+
+    // 删除 cart表中的数据
+    function delete(){
+        $gId = $_GET['gId'];
+        $userId = $_GET['userId'];
+        $sql = "delete from carts where productId=$gId and userId=$userId";
+        $res = query($sql);
+        if($res == 1){
+            echo json_encode([
+                'stateCode'=>200,
+                'state'=>'success',
+                'data'=>''
+                ]);
+        }else{
+            echo json_encode([
+                'stateCode'=>333,
+                'state'=>'error',
+                'data'=>''
+                ]);
+        }
+    }
+
 ?>

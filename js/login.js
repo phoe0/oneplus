@@ -4,7 +4,6 @@ class Login {
 
         // 给提交按钮,绑定点击事件
         bindEve(this.inputs[2], 'click', this.collInfo.bind(this));
-
     }
     collInfo() {
         let userName = this.inputs[0].value;
@@ -19,7 +18,7 @@ class Login {
                 if (userPwd == pwdData) {
                     localStorage.setItem('userName', userName)
                     localStorage.setItem('userId', userId);
-                    alert('登录成功');
+                    location.href = 'http://localhost/pro/index-one.html';
                 } else {
                     alert('用户名或密码错误');
                 }

@@ -57,8 +57,6 @@ class ajax {
           } else {
             reject('error')
           }
-
-
         }
       }
     });

@@ -1,81 +1,36 @@
-class Details {
+class DetailsTwo {
     constructor() {
-        this.smallObj = $('#samll');
-
-        this.bindE();
-    }
-    // 绑定事件的函数
-    bindE() {
-        // console.log('啊哈哈');
-        bindEve($('#small'), 'mouseenter', this.enter);
-        bindEve($('#small'), 'mouseleave', this.leave);
-        bindEve($('#small'), 'mousemove', this.move);
-    }
-
-    // 鼠标移入
-    enter() {
-        // console.log(9090);
-        //  鼠标移入small，显示滑块和大图
-        $('#mask').style.display = 'block';
-        $('#big').style.display = 'block';
-    }
-    leave() {
-        //  鼠标移出small，滑块和大图消失
-        $('#mask').style.display = 'none';
-        $('#big').style.display = 'none';
-    }
-    move(eve) {
-        let e = eve || window.event;
-        // 1、获取鼠标相对于文档的坐标
-        let pageX = e.pageX;
-        let pageY = e.pageY;
-
-        // 2、获取small父级的盒子，的坐标
-        let boxLeft = $('.box-fang').offsetLeft;
-        let boxTop = $('.box-fang').offsetTop;
-
-        // 3、获取小滑块自身的宽高， 的一半
-        let maskWidth = $('#mask').offsetWidth / 2;
-        let maskHeight = $('#mask').offsetHeight / 2;
-
-        // 4、计算小滑块移动时，可设置的坐标
-        let tmpX = pageX - boxLeft - maskWidth;
-        let tmpY = pageY - boxTop - maskHeight;
-
-        // 6、让小滑块不出边界
-        if (tmpX < 0) tmpX = 0;  // 左边界
-        if (tmpY < 0) tmpY = 0;   // 右边界
-        // 计算右边和下边，可以设置的最大距离
-        let targetX = $('#small').offsetWidth - $('#mask').offsetWidth;
-        let targetY = $('#small').offsetHeight - $('#mask').offsetHeight;
-        if (tmpX > targetX) tmpX = targetX;
-        if (tmpY > targetY) tmpY = targetY;
-
-        // 5、设置小滑块的坐标
-        $('#mask').style.left = tmpX + 'px';
-        $('#mask').style.top = tmpY + 'px';
-
-        /*
-            滑块覆盖到哪里,对应的大盒子里图片就展示哪里
-                
-            mask移动的距离 / mask移动的最大距离 == img移动的距离 / img移动的最大距离
-            img移动的距离 = mask移动的距离 / mask移动的最大距离 * img移动的最大距离
-        */
-
-        // 计算大图的最大移动距离 【大图的宽度-大图展示区域的宽度】
-        let bigTargetX = $('.big-img').offsetWidth - $('#big').offsetWidth;
-        let bigTargetY = $('.big-img').offsetHeight - $('#big').offsetHeight;
-
-        // 计算大图移动时，可以设置的坐标
-        let tmpBigX = tmpX / targetX * bigTargetX;
-        let tmpBigY = tmpY / targetY * bigTargetY;
-        // 设置大图的坐标
-        $('.big-img').style.left = -tmpBigX + 'px';
-        $('.big-img').style.top = -tmpBigY + 'px';
-        // console.log(bigTargetX, bigTargetY);
+        this.bind();
 
     }
+    bind() {
+        // 获取浏览器传过来的参数，商品id
+        let gId = location.search.split('=')[1];
+        ajax.post('./php/goods.php?fn=getGoodsInfo', { gId: gId }).then(resArr => {
+            console.log(resArr);
+            if (resArr[0] == 200) {
+                const goodDel = resArr[2][0];
 
+                let delObj = $('#cont .imgdel');
+                console.log(delObj);
+                // delObj.querySelector('.imgdel');
+                // console.log(delObj.querySelector('.imgdel'));
+                $('#cont .imgdel').src = goodDel.gImgSrc;
+                $('#cont .big-img').src = goodDel.gImgSrc;
+                $('.right .model').innerHTML = goodDel.gName;
+                $('.right .price').innerHTML = '￥：' + goodDel.gPrice + '元';
+            }
+        });
+    }
 
 }
-new Details;
+new DetailsTwo;
+
+
+
+/*
+{   gId: "10",
+    gName: "OnePlus 8 Pro 砂岩全包保护壳 砂岩黑",
+    gPrice: "79.90", gNum: "45",
+    gImgSrc: "https://image01.oneplus.cn/ebp/202003/26/1059/61e3e6884765d7bc143360fd45ebae3a_320_320.png"}
+*/

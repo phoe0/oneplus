@@ -58,7 +58,7 @@ class Carts {
     static getCartGoods(gIds, gIdNums) {
         // console.log(gIds, gIdNums);
         ajax.post('./php/cart.php?fn=lst', { gId: gIds }).then(resArr => {
-            console.log(resArr);
+            // console.log(resArr);
             if (resArr[0] == 200) {
                 // console.log(resArr[2]);
                 let str = '';
@@ -80,7 +80,7 @@ class Carts {
                         </td>
                         <td class="subtotal">${ele.gPrice}</td>
                         <td class="operation">
-                            <button class="delete" onclick="fn()"> 删除</button>
+                            <button class="delete" onclick="Carts.delGoods(this,${ele.gId})"> 删除</button>
                         </td>
                     </tr>
                     `;
@@ -148,6 +148,7 @@ class Carts {
         } else {
             eleObj.nextElementSibling.value = gNum;
         }
+
         if (localStorage.getItem('userId')) {
             // 若登录，则修改数据库cart表的数量
             Carts.updateCartNums(gId, gNum);
@@ -155,33 +156,75 @@ class Carts {
             // 未登录，则修改浏览器的数量
             Carts.updaLocalNums(gId, gNum);
         }
-
+        // 小计的实现；
+        let priceObj = eleObj.parentNode.nextElementSibling;
+        priceObj.innerHTML = (eleObj.parentNode.previousElementSibling.innerHTML * gNum).toFixed(2);
     }
 
 
     // 修改数据库的数量  
     static updateCartNums(gId, gNum) {
-        console.log(gId, gNum);
+        // console.log(gId, gNum);
         let userId = localStorage.getItem('userId');
         ajax.get('./php/cart.php', { fn: 'update', gId: gId, userId: userId, gNum: gNum }).then(resArr => {
             console.log(resArr);
         });
-        console.log(userId);
-
     }
     // 修改浏览器的数量；
     static updaLocalNums(gId, gNum) {
         let cartLocal = JSON.parse(localStorage.getItem('carts'));
         cartLocal[gId] = gNum;
-        localStorage.setItem('carts', JSON.stringify(cartLocal))
+        localStorage.setItem('carts', JSON.stringify(cartLocal));
+        console.log(gId, gNum);
+        if (gNum == 0) {
+            let eleObj = $('.change');
+            Carts.delGoods(eleObj, gId);
+        }
     }
-
-
 
 
     // 计算总的[数量和价格]
     static sumNumPrice() {
+        let checkOnes = all('.check-one');  // 获取所有的单选框
+        let count = 0;  // 保存总的数量
+        let xj = 0;   // 保存总的价钱
+        checkOnes.forEach(ele => {   // 遍历所有的单选框
+            // console.log(ele);
+            if (ele.checked) {
+                let trObj = ele.parentNode.parentNode;  // 获取当前的行
+                let tmpCount = trObj.querySelector('.count-input').value;
+                let tmpXj = trObj.querySelector('.subtotal').innerHTML;
 
+                count += tmpCount - 0;
+                xj += tmpXj - 0;
+            }
+        });
+        $('#selectedTotal').innerHTML = count;
+        $('#priceTotal').innerHTML = parseInt(xj * 100) / 100;
     }
+
+
+    // 删除
+    static delGoods(eleObj, gId) {
+        let userId = localStorage.getItem('userId');
+        let trObj1 = eleObj.parentNode.parentNode;
+
+        if (userId) {   // 如果登录，删除数据库
+            ajax.get('./php/cart.php', { fn: 'delete', userId: userId, gId: gId }).then(resArr => {
+                console.log(resArr);
+                if (resArr[0] == 200) {
+                    trObj1.remove();
+                }
+            });
+        } else {  // 未登录，删除浏览器；
+            let cartsDel = JSON.parse(localStorage.getItem('carts'));
+            console.log(cartsDel);
+            delete cartsDel[gId];
+            localStorage.setItem('carts', JSON.stringify(cartsDel));
+            trObj1.remove();
+        }
+    }
+
+
 }
 new Carts;
