@@ -2,7 +2,10 @@ class Goods {
     constructor() {
         this.list();
 
+
+
     }
+
 
     // 获取所有的商品信息
     list() {
@@ -42,6 +45,10 @@ class Goods {
                 $('.goods-list').innerHTML = str;
 
                 Goods.targetDetail();
+
+
+                //   滚动条事件
+                window.onscroll = this.loadAll;
 
             }
         });
@@ -115,6 +122,57 @@ class Goods {
     // hrefDetail() {
     //     console.log(1);
     // }
+
+
+
+    loadAll(ele) {
+        console.log(ele);
+        // 获取可视区域的高度 和 滚动条的高度   ===[显示内容的高度]
+        let clientH = Goods.getHeight() + Goods.getTop();
+        // 获取当前内容的高度
+        let contentH = parseInt(all('#conten  .goodsCon').length / 4) * ($('#conten  .goodsCon').offsetHeight);
+        console.log(clientH, contentH);
+        let str = `
+        <div class="goodsCon">
+        <a target="_blank">
+            <img src="./img/good.png" class="icon">
+            <h4 class="title">李宁闪击篮球鞋驭帅</h4>
+            <div class="info">限时抢购200条</div>
+        </a>
+        <div class="priceCon">
+            <span class="price">￥499.1</span>
+            <span class="oldPrice">￥598.92</span>
+            <div>
+                <span class="soldText">已售20%</span>
+                <span class="soldSpan">
+                    <span style="width: 87.12px;"></span>
+                </span>
+            </div>
+        </div>
+        <a class="button" target="_blank" onclick="">
+            立即抢购
+        </a>
+    </div>
+        `;
+        if (clientH > contentH) {
+            $('.goods-list').innerHTML += str;
+
+        }
+
+    }
+
+    //获取窗口的宽度和高度
+    static getHeight() {
+        return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    }
+    static getWidth() {
+        return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    }
+    // 获取滚动条的高度
+    static getTop() {
+        return window.pageYOffset || document.body.scrollTop
+    }
+
 
     //   方法
 

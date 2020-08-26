@@ -119,7 +119,7 @@
                     <div class="mask" id="mask"></div>
                 </div>
                 <div id="big" class="big">
-                    <img class="big-img" src="./img/list-1.png" width="700px" alt="">
+                    <img class="big-img" src="./img/list-1.png" width="1000px" alt="">
                 </div>
 
                 <!-- 展示更多图片 -->
@@ -140,8 +140,8 @@
                 </div>
                 <li class="li">最高3、6、12期分期免息</li>
                 <li class="li">一加8黑镜/青空，购机送手机壳，价值99元</li>
-                <p><a href="#">OnePlus 8 最高领券立减600，领券入口&nbsp; ></a></p>
-                <p><a href="#">购买OnePlus 8 Pro，券后4999元起 > </a></p>
+                <p><a href="javascript:0">OnePlus 8 最高领券立减600，领券入口&nbsp; ></a></p>
+                <p><a href="javascript:0">购买OnePlus 8 Pro，券后4999元起 > </a></p>
                 <div class="chenck-model">
                     <p>选择版本号：</p>
                     <ul class="list-mol">
@@ -155,13 +155,13 @@
                 </div>
                 <div class="buy-num">
                     <em>购买数量：</em>
-                    <input type="button" value="-" class="changeN">
+                    <input type="button" value="-" class="changeN" onclick="DetailsTwo.changeN(this,1)">
                     <input type="text" value="1" id="num" class="changeN">
-                    <input type="button" value="+" class="changeN">
+                    <input type="button" value="+" class="changeN" onclick="DetailsTwo.changeN(this,2)">
                 </div>
-                <div class="buy-now">
+                <div class=" buy-now">
                     <span class="buy">立即购买</span>
-                    <span class="add">加入购物车</span>
+                    <span class="add" onclick="DetailsTwo.addNow()">加入购物车</span>
                 </div>
                 <div class="zhifu">
                     <p></p>
@@ -243,6 +243,7 @@
     <script src="./js/ajax.js"></script>
     <script src="./js/details.js"></script>
     <script src="./js/fangdajng.js"></script>
+
 </body>
 
 </html>

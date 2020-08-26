@@ -128,6 +128,7 @@
     display: none; }
   #cont .details .left #big {
     border: 1px solid #d8d6d6;
+    background: white;
     width: 500px;
     height: 500px;
     position: absolute;

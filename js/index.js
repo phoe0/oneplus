@@ -11,6 +11,7 @@ class Index {
         this.hover();
         // 登录注册
         bindEve($('#person'), 'mouseenter', this.login);
+        bindEve($('#person'), 'mouseleave', this.loginLeave);
         bindEve($('#login'), 'mouseleave', this.out);
 
         bindEve($('#login .login'), 'click', this.loginFn);
@@ -72,11 +73,17 @@ class Index {
                 localStorage.removeItem('userId');
                 location.reload();
             }
-
         }
     }
     out() {
         $('#login').style.display = 'none';
+    }
+
+    // 离开登录注册的icon图标
+    loginLeave() {
+        // console.log('hahah');
+        // console.log($('#login'));
+        // $('#login').style.display = 'none';
     }
 
 
