@@ -32,17 +32,43 @@ class Register {
         // console.log(this);  // 指向实例化对象
 
         let name = e.target.value;
-        //  用户名仅支持中文、字母、数字、“-”“_”的组合，4-10个字符
-        let reg = /^[\w\-\u4E00-\u9FA5]{4,10}$/;
-        if (reg.test(name)) {
-            this.spans[0].innerHTML = '';
-            this.ems[0].innerHTML = '√';
-            this.nameFlag = true;
-        } else {
-            this.spans[0].innerHTML = '用户名不合法';
-            this.ems[0].innerHTML = '';
-            this.nameFlag = false;
-        }
+        ajax.post('./php/user.php?fn=judgeName', { userName: name }).then(resArr => {
+            // console.log(resArr);
+            if (resArr[0] != 200) {
+
+                //  用户名仅支持中文、字母、数字、“-”“_”的组合，4-10个字符
+                let reg = /^[\w\-\u4E00-\u9FA5]{4,10}$/;
+                if (reg.test(name)) {
+                    this.spans[0].innerHTML = '';
+                    this.ems[0].innerHTML = '√';
+                    this.nameFlag = true;
+                } else {
+                    this.spans[0].innerHTML = '用户名长度位4-10个字符，仅支持中文、字母、数字、-、_';
+                    this.ems[0].innerHTML = '';
+                    this.nameFlag = false;
+                }
+            } else {
+                alert('用户名已存在')
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

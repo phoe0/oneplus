@@ -56,7 +56,7 @@ class Carts {
 
 
     static getCartGoods(gIds, gIdNums) {
-        // console.log(gIds, gIdNums);
+        console.log(gIds, gIdNums);
         ajax.post('./php/cart.php?fn=lst', { gId: gIds }).then(resArr => {
             // console.log(resArr);
             if (resArr[0] == 200) {
@@ -78,15 +78,22 @@ class Carts {
                             <input class="count-input" type="text" value="${gIdNums[ele.gId]}">
                             <button class="change"  onclick="Carts.changeNum(this,${ele.gId},2)">+</button>
                         </td>
-                        <td class="subtotal">${ele.gPrice}</td>
-                        <td class="operation">
-                            <button class="delete" onclick="Carts.delGoods(this,${ele.gId})"> 删除</button>
-                        </td>
-                    </tr>
-                    `;
+                        <td class="subtotal">${ele.gPrice * (gIdNums[ele.gId])}</td >
+                <td class="operation">
+                    <button class="delete" onclick="Carts.delGoods(this,${ele.gId})"> 删除</button>
+                </td>
+                    </tr >
+                `;
                 });
                 // 将数据追加到tbody中；
                 $('tbody').innerHTML = str;
+                // $('.subtotal').innerHTML = $('.price').innerHTML * $('.count-input').value;
+
+                // console.log($('.price').innerHTML);
+                // console.log($('.count-input').value);
+                // console.log($('.subtotal').innerHTML);
+                // console.log(parseInt(gIdNums[gId]));
+
             }
         });
     }
@@ -159,6 +166,10 @@ class Carts {
         // 小计的实现；
         let priceObj = eleObj.parentNode.nextElementSibling;
         priceObj.innerHTML = (eleObj.parentNode.previousElementSibling.innerHTML * gNum).toFixed(2);
+
+
+        // 计算总的[数量和价格]
+        Carts.sumNumPrice();
     }
 
 
@@ -167,7 +178,7 @@ class Carts {
         // console.log(gId, gNum);
         let userId = localStorage.getItem('userId');
         ajax.get('./php/cart.php', { fn: 'update', gId: gId, userId: userId, gNum: gNum }).then(resArr => {
-            console.log(resArr);
+            // console.log(resArr);
         });
     }
     // 修改浏览器的数量；
