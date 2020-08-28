@@ -51,3 +51,14 @@
         color: white;
         background: #e26969;
         border-radius: 10px; }
+
+#fenye li a {
+  display: block;
+  margin: 8px 5px;
+  float: left;
+  background: white;
+  border: 1px solid gray;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px; }

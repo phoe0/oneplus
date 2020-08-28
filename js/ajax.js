@@ -51,8 +51,8 @@ class ajax {
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
           if (xhr.status == 200) {
-            let { stateCode, state, data } = JSON.parse(xhr.response);
-            let arr = [stateCode, state, data];
+            let { stateCode, state, data, count } = JSON.parse(xhr.response);
+            let arr = [stateCode, state, data, count];
             resolve(arr)
           } else {
             reject('error')

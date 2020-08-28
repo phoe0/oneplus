@@ -31,14 +31,29 @@
         $ids = $_POST['gId'];
         $ids = substr($ids,0,strlen($ids)-1);
 
+        // 设置每页显示几条数据；
+        $length = 3;
+        // 获取当前的页码
+        $page = $_POST['page'];
+        // 计算起始位置
+        $srart = ($page - 1)*$length; 
+        // 接收数据的长度
+        $count = $_POST['count'];
+        // 计算总的页数
+        $pCount=round($count / $length);
+
+        $sql ="select * from product where gId in($ids) limit $srart,$length";
+
+
         // 一次获取多条数据；
-        $sql = "select * from product where gId in ($ids)";
+        // $sql = "select * from product where gId in ($ids)";
         $data = select($sql);
         if($data){
             echo json_encode([
                 'stateCode'=>200,
                 'state'=>'success',
-                'data'=>$data
+                'data'=>$data,
+                'count'=>$pCount
             ]);
         }else{
             echo json_encode([

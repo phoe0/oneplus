@@ -2,6 +2,8 @@
   min-height: 430px;
   overflow: hidden;
   background: whitesmoke; }
+  #conten .delImage {
+    padding: 60px 0px 50px 200px; }
   #conten .goods-list {
     width: 1200px;
     min-height: 300px;

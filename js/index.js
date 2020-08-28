@@ -7,6 +7,10 @@ class Index {
         bindEve($('#three'), 'mouseleave', this.leave);
 
 
+
+
+
+
         this.goTop();
         this.hover();
         // 登录注册
@@ -110,6 +114,7 @@ class Index {
     // 返回顶部；
     goTop() {
         window.onscroll = function () {
+            console.log(111);
             var top = document.documentElement.scrollTop || document.body.scrollTop;
             // console.log(top);
             if (top < 100) {
@@ -159,3 +164,4 @@ class Index {
 
 }
 new Index;
+

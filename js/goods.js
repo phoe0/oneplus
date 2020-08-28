@@ -21,11 +21,12 @@ class Goods {
                 // console.log(resArr[2]);
                 // resArr[2] 是一个数组，数组的每个元素是商品的每一行信息；
                 this.dataArr = resArr[2];
+
                 resArr[2].forEach(ele => {
                     str += `
                             <div class="goodsCon" >
                                 <a target="_blank">
-                                    <img src="${ele.gImgSrc}" class="icon" key="${ele.gId}">
+                                    <img src="./img/loading.gif" class="icon lazyImg" data-src="${ele.gImgSrc}" key="${ele.gId}">
                                     <h4 class="title">${ele.gName}</h4>
                                     <div class="info">限时抢购200条</div>
                                 </a>
@@ -47,27 +48,12 @@ class Goods {
                 });
                 $('.goods-list').innerHTML = str;
 
+                // 跳到详情页
                 Goods.targetDetail();
-
-                // let Arr = [];
-                let arr = [];
-                for (let i = 1; i < this.dataArr.length; i++) {
-                    arr.push(this.dataArr[i]);
-                    if (i % 4 == 0) {
-                        this.allData.push(arr);
-                        arr = [];
-                    }
-                }
-
-
-
-
 
 
                 //   滚动条事件
                 window.onscroll = this.loadAll.bind(this);
-
-
             }
         });
     }
@@ -111,11 +97,14 @@ class Goods {
             }
             cartsObj[gId] = gNum;
             localStorage.setItem('carts', JSON.stringify(cartsObj));
+            alert('已加入本地购物车');
+
         } else {
             // 浏览器中此时没有数据
             // 构造商品信息
             let tmpObj = { [gId]: gNum };
             localStorage.setItem('carts', JSON.stringify(tmpObj));
+            alert('已加入本地购物车');
         }
     }
 
@@ -123,7 +112,7 @@ class Goods {
     // 跳转到详情页
     static targetDetail() {
         let imgsObj = all('#conten .goodsCon img');
-        console.log(imgsObj.length);
+        // console.log(imgsObj.length);
         for (let i = 0; i < imgsObj.length; i++) {
             // imgsObj[i].addEventListener('click', this.hrefDetail);
             // bindEve(imgsObj[i], 'click', Goods.hrefDetail());
@@ -137,102 +126,67 @@ class Goods {
 
     }
 
-    // hrefDetail() {
-    //     console.log(1);
-    // }
+
 
 
 
     loadAll() {
-        const data = this.allData;
-        // console.log(data);
-
-        let str1 = '';
-        data.forEach(tmp => {
-            tmp.forEach(ele => {
-                // console.log(tmp);
-                str1 += `
-                <div class="goodsCon" >
-                    <a target="_blank">
-                        <img src="${ele.gImgSrc}" class="icon" key="${ele.gId}">
-                        <h4 class="title">${ele.gName}</h4>
-                        <div class="info">限时抢购200条</div>
-                    </a>
-                    <div class="priceCon">
-                        <span class="price">￥${ele.gPrice}</span>
-                        <span class="oldPrice">￥${(ele.gPrice * 1.2).toFixed(2)}</span>
-                        <div>
-                            <span class="soldText">已售${ele.gNum}%</span>
-                            <span class="soldSpan">
-                                <span style="width: 87.12px;"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <a class="button" target="_blank" onclick="Goods.addCart(${ele.gId},1)">
-                        立即抢购
-                    </a>
-                </div>                                      
-        `;
-            })
-            // console.log('---------');
-        });
-        // console.log(str1);
+        var imgs = document.querySelectorAll('.lazyImg');
+        lazy(imgs);
 
 
+        // all('.goods-list>a>img');
+        // // console.log(all('#conten .goodsCon img'));
+        // // 懒加载的实现；
+        // Goods.lozyLoad(all('#conten .goodsCon img'));
 
+        // // 获取当前内容的高度
+        // let contentH = parseInt(all('#conten  .goodsCon').length / 4) * ($('#conten  .goodsCon').offsetHeight);
 
-
-        // 获取可视区域的高度 和 滚动条的高度   ===[显示内容的高度]
-        let clientH = Goods.getHeight() + Goods.getTop();
-        // 获取当前内容的高度
-        let contentH = parseInt(all('#conten  .goodsCon').length / 4) * ($('#conten  .goodsCon').offsetHeight);
-        // console.log(clientH, contentH);
-        let str = `
-        <div class="goodsCon">
-            <a target="_blank">
-                <img src="./img/good.png" class="icon">
-                <h4 class="title">李宁闪击篮球鞋驭帅</h4>
-                <div class="info">限时抢购200条</div>
-            </a>
-            <div class="priceCon">
-                <span class="price">￥499.1</span>
-                <span class="oldPrice">￥598.92</span>
-                <div>
-                    <span class="soldText">已售20%</span>
-                    <span class="soldSpan">
-                        <span style="width: 87.12px;"></span>
-                    </span>
-                </div>
-            </div>
-            <a class="button" target="_blank" onclick="">
-                立即抢购
-            </a>
-        </div>
-        `;
-        if (clientH > contentH) {
-            // $('.goods-list').innerHTML += str;
-            // this.list();
-            console.log(909090);
-        }
-
-        // 点击调转到详情页；
-        Goods.targetDetail();
+        // // 点击调转到详情页；
+        // Goods.targetDetail();
     }
+    // 懒加载的方法
+    // static lozyLoad(imgs) {
+    //     // 获取可视区域的高度 和 滚动条的高度   ===  [显示内容的高度]
+    //     let clientH = Goods.getHeight() + Goods.getTop();
+    //     for (let i = 0; i < imgs.length; i++) {
+    //         // console.log(Goods.getBroTop(imgs[i]));
+    //         console.log(imgs[i].offsetTop);
+    //         if (clientH > Goods.getBroTop(imgs[i])) {
+    //             // console.log(111);
+    //             (function () {
+    //                 setTimeout(function () {
+    //                     var tmp = new Image();
+    //                     tmp.src = imgs[i].getAttribute('data-src');
+    //                     tmp.onload = function () {
+    //                         imgs[i].src = imgs[i].getAttribute('data-src');
+    //                     }
+    //                 }, 2000);
+    //             })(i);
+    //         }
+    //     }
 
-    //获取窗口的宽度和高度
-    static getHeight() {
-        return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    }
-    static getWidth() {
-        return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    }
-    // 获取滚动条的高度
-    static getTop() {
-        return window.pageYOffset || document.body.scrollTop
-    }
+    // }
+
+    // //获取窗口的宽度和高度
+    // static getHeight() {
+    //     return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    // }
+    // static getWidth() {
+    //     return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    // }
+    // // 获取滚动条的高度
+    // static getTop() {
+    //     return window.pageYOffset || document.body.scrollTop
+    // }
+    // // 获取到浏览器顶部的距离
+    // static getBroTop(ele) {
+    //     return ele.offsetTop;
+    // }
 
 
-    //   方法
+    // //   方法
 
 }
 new Goods;

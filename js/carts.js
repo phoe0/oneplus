@@ -1,7 +1,7 @@
 class Carts {
     constructor() {
         // 1、获取[cart表]中的数据；
-        this.listCart();
+        Carts.listCart();
 
         // 全选按钮
         all('.check-all')[0].addEventListener('click', this.checkAll);
@@ -9,7 +9,7 @@ class Carts {
     }
 
     // 获取数据库 [cart表] 中的数据；
-    listCart() {
+    static listCart(tmpPage = 1) {
         // 根据登录状态获取 商品的id和数量；
         let userId = localStorage.getItem('userId');
         // 声明变量。保存购物车的id, 构造一个id序列；
@@ -33,7 +33,7 @@ class Carts {
                     });
                     // console.log(cartGoodsIds, cartIdNum);
 
-                    Carts.getCartGoods(cartGoodsIds, cartIdNum);
+                    Carts.getCartGoods(cartGoodsIds, cartIdNum, tmpPage);
                 }
             });
 
@@ -50,15 +50,18 @@ class Carts {
             }
             // console.log(goodsId);  // 商品id 
             // console.log(cartsIdNum);    // 商品 {id:数量} 的对象
-            Carts.getCartGoods(cartGoodsIds, cartsIdNum);
+            Carts.getCartGoods(cartGoodsIds, cartsIdNum, tmpPage);
         }
     }
 
 
-    static getCartGoods(gIds, gIdNums) {
-        console.log(gIds, gIdNums);
-        ajax.post('./php/cart.php?fn=lst', { gId: gIds }).then(resArr => {
+    static getCartGoods(gIds, gIdNums, tmpPage) {
+        // console.log(gIds);
+        let count = gIds.split(',').length - 1;
+        ajax.post('./php/cart.php?fn=lst', { gId: gIds, page: tmpPage, count: count }).then(resArr => {
             // console.log(resArr);
+            let count = resArr[3];   // 总的页数
+            // console.log(count);
             if (resArr[0] == 200) {
                 // console.log(resArr[2]);
                 let str = '';
@@ -79,21 +82,29 @@ class Carts {
                             <button class="change"  onclick="Carts.changeNum(this,${ele.gId},2)">+</button>
                         </td>
                         <td class="subtotal">${ele.gPrice * (gIdNums[ele.gId])}</td >
-                <td class="operation">
-                    <button class="delete" onclick="Carts.delGoods(this,${ele.gId})"> 删除</button>
-                </td>
+                        <td class="operation">
+                            <button class="delete" onclick="Carts.delGoods(this,${ele.gId})"> 删除</button>
+                        </td>
                     </tr >
                 `;
                 });
                 // 将数据追加到tbody中；
                 $('tbody').innerHTML = str;
-                // $('.subtotal').innerHTML = $('.price').innerHTML * $('.count-input').value;
 
-                // console.log($('.price').innerHTML);
-                // console.log($('.count-input').value);
-                // console.log($('.subtotal').innerHTML);
-                // console.log(parseInt(gIdNums[gId]));
 
+                /**
+                 *  渲染分页的页码 
+                 */
+                let pageStr = '';
+                for (let i = 1; i <= count; i++) {
+                    pageStr += `
+                        <li> 
+                            <a href="javascript:0" onclick="Carts.listCart(${i})">${i}</a> 
+                        </li>                  
+                    `;
+                }
+                // 将分页的标签追加到ul中
+                $('#fenye').innerHTML = pageStr;
             }
         });
     }
